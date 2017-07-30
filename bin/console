@@ -1,0 +1,52 @@
+#!/usr/bin/env node
+
+// const repl = require('repl')
+
+const app = require('../app');
+const models = require('../models')
+const User = models.User
+
+// const readline = require('readline');
+//
+// const rl = readline.createInterface({
+//   input: process.stdin,
+//   output: process.stdout
+// });
+
+const stdin = process.openStdin();
+
+// require('tty').setRawMode(true);
+// stdin.on('keypress', function (chunk, key) {
+//   process.stdout.write('Get Chunk: ' + chunk + '\n');
+//   if (key && key.ctrl && key.name == 'c') process.exit();
+// });
+
+// rl.question('What do you think of Node.js? ', (answer) => {
+//   // TODO: Log the answer in a database
+//   console.log(`Thank you for your valuable feedback: ${answer}`);
+//
+//   rl.close();
+// });
+
+
+// const replServer = require('repl').start('> ')
+
+replServer.context.User = User
+replServer.context.dd = value => {
+    console.log(value)
+}
+
+require('fs').readFile('/home/kazuya/.node_repl_history', 'utf8', (err, data) => {
+//     replServer.defineCommand('r', {
+//         help: 'Say hello',
+//         action: function(name) {
+//             this.bufferedCommand = '';
+//             this.displayPrompt();
+//         }
+//     });
+// })
+
+
+
+
+// vim:set ft=js

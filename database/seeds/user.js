@@ -1,10 +1,13 @@
-const models  = require('../../models');
+'use strict';
 
-models.User.create({ username: 'fnord', job: 'omnomnom' })
-  .then(() => User.findOrCreate({where: {username: 'fnord'}, defaults: {job: 'something else'}}))
-  .spread((user, created) => {
-    console.log(user.get({
-      plain: true
-    }))
-  })
+module.exports = {
+  up: function (queryInterface, Sequelize) {
+    return queryInterface.bulkInsert('Users', [
+      { name: 'John Doe', createdAt: new Date(), updatedAt: new Date() }
+    ]);
+  },
 
+  down: function (queryInterface, Sequelize) {
+    return queryInterface.bulkDelete('Users');
+  }
+};
