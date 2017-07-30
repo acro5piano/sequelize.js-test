@@ -3,9 +3,21 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  #server-time
+  #random
 
   script(src="/socket.io/socket.io.js")
 
   script.
     var socket = io();
+    var elTime = document.getElementById('server-time');
+    var elRandom = document.getElementById('random');
+
+    socket.on('time', function(timeString) {
+      elTime.innerHTML = 'Server time: ' + timeString;
+    });
+
+    socket.on('random', function(random) {
+      elRandom.innerHTML = 'Rnadom: ' + random;
+    });
 

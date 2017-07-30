@@ -9,6 +9,13 @@ io.on('connection', function(socket){
   })
 })
 
+setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
+let second = 0
+setInterval(() => {
+  io.emit('random', second)
+  second += 1
+}, 100);
+
 module.exports = app;
 
 ['./bootstrap', './app/routes', './app/exceptions/handler'].forEach(file => {
