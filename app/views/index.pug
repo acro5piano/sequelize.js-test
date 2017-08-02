@@ -5,19 +5,11 @@ block content
   p Welcome to #{title}
   #server-time
   #random
+  #app
+
 
   script(src="/socket.io/socket.io.js")
 
-  script.
-    var socket = io();
-    var elTime = document.getElementById('server-time');
-    var elRandom = document.getElementById('random');
+  // script.
 
-    socket.on('time', function(timeString) {
-      elTime.innerHTML = 'Server time: ' + timeString;
-    });
-
-    socket.on('random', function(random) {
-      elRandom.innerHTML = 'Rnadom: ' + random;
-    });
-
+  script(src="/bundle.js")

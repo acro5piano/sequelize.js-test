@@ -12,7 +12,7 @@ module.exports = {
 
   devServer: {
     proxy: {
-      '/api': {
+      '/': {
         target: {
           host: "localhost",
           protocol: 'http:',
@@ -22,7 +22,7 @@ module.exports = {
       }
     },
     contentBase: 'dist',
-    port: 3000
+    port: 3000,
   },
 
   resolve: {
@@ -41,6 +41,10 @@ module.exports = {
         query:{
           presets: ['es2015']
         }
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
       },
       {
         test: /\.css$/,
