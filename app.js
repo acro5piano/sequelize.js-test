@@ -10,11 +10,17 @@ io.on('connection', function(socket){
 })
 
 setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
+
 let second = 0
 setInterval(() => {
   io.emit('random', second)
   second += 1
 }, 100);
+
+app.get('/send', function(req, res) {
+  io.emit('message', req.query.text)
+  res.send('message sent')
+})
 
 module.exports = app;
 
